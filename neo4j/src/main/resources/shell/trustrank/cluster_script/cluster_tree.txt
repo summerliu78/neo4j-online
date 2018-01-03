@@ -1,0 +1,36 @@
+/server/tinyv_data/lw/blackWhriteKList/
+├── data	#集群down下来的离线文件
+│   ├── 2017-12-15 #当天名字命名
+│   │   ├── blacklist	#黑名单 
+│   │   │   ├── part-00201
+│   │   │   └── _SUCCESS
+│   │   ├── data-2017-12-15.tgz	#打包数据
+│   │   ├── onedegree	#一度数据
+│   │   │   ├── part-00179
+│   │   │   └── _SUCCESS
+│   │   ├── relationship	#边关系数据
+│   │   │   ├── part-00179
+│   │   │   └── _SUCCESS
+│   │   └── whitelist	#白名单数据
+│   │       ├── part-00199
+│   │       └── _SUCCESS
+│   ├── 2017-12-16	#每天一个目录
+├── file	#md5文件
+│   └── md5.txt
+├── jar	#spark任务jar包
+│   ├── neo4j-service.jar
+├── logs	#日志
+│   ├── app_log	#脚本执行日志
+│   │   └── 2017-12-19_08-30-01.log
+│   └── spark_log	#spark日志执行日志
+│       ├── 2017-12-07
+│       │   ├── 2017-12-07_14-44-20-running.log
+│       │   ├── 2017-12-07_17-02-24-running.log
+│       │   ├── 2017-12-07_19-12-44-running.log
+│       │   └── 2017-12-07_19-14-48-running.log
+│       └── 2017-12-19
+├── ReadMe.txt	#解释文件
+└── script	#脚本文件
+    ├── bak.tgz	#历史部分版本
+    ├── cleanData.sh	#清数据脚本
+    └── main.sh	#主程序脚本

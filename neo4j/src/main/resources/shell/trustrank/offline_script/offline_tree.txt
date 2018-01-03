@@ -1,0 +1,51 @@
+/server/TRdata/
+├── RankFileUpdate #数据处理根目录
+│   ├── data	#数据文件目录
+│   │   ├── data-2017-12-19.tgz #每日定时copy文件
+│   │   ├── md5.txt	#copy完整性校验文件
+│   │   ├── rankNeed	#执行离线数据所需文件存储目录
+│   │   │   ├── backup	#行离线数据所需文件存储目录 备份文件目录
+│   │   │   │   ├── onedegree-2017-12-19.txt #一度联系人文件备份 （复杂网络降级处理需要）
+│   │   │   │   ├── relationship-2017-12-19.txt #算法所需边关系文件备份
+│   │   │   │   ├── blacklist-2017-12-19.txt	#黑名单文件备份
+│   │   │   │   └── whitelist-2017-12-19.txt	#白名单文件备份
+│   │   │   ├── blacklist	#黑名单文件解压（只有一份）
+│   │   │   │   ├── part-00000	#具体的样子 都是一些partition的数据
+│   │   │   │   ├── part-00201
+│   │   │   │   └── _SUCCESS
+│   │   │   ├── blacklist.txt	#黑名单文件 online
+│   │   │   ├── onedegree	#一度联系人文件解压（只有一份）
+│   │   │   │   ├── part-00179	#具体的样子 都是一些partition的数据
+│   │   │   │   └── _SUCCESS
+│   │   │   ├── onedegree.txt	#一度联系人 online
+│   │   │   ├── relationship	#边关系文件解压（只有一份）
+│   │   │   │   ├── part-00179	#具体的样子 都是一些partition的数据
+│   │   │   │   ├── _SUCCESS
+│   │   │   │   └── _temporary
+│   │   │   │       └── 0
+│   │   │   ├── relationship.txt	#边关系文件 online
+│   │   │   ├── whitelist	#白名单文件解压 （只有一份）
+│   │   │   │   ├── part-00199	#具体的样子 都是一些partition的数据
+│   │   │   │   ├── _SUCCESS
+│   │   │   │   └── _temporary
+│   │   │   │       └── 0
+│   │   │   └── whitelist.txt	#白名单文件 online
+│   │   └── rankResult	#执行完离线算法程序 产生分数数据文件的目录
+│   │       ├── backup	#过往的备份文件
+│   │       │   └── trustrankResult.txt-2017-12-18	#rankResult备份文件
+│   │       └── trustrankResult.txt	#分数文件 online
+│   ├── jar
+│   │   └── Graph-1.0.0-spark161.jar	#jave离线程序jar包
+│   ├── log	#执行脚本产生的日志
+│   │   └── 2017-12-19.log	#具体日志（每天分割，重复执行会覆盖）
+│   ├── script	#脚本文件目录
+│   │   ├── cleanData.sh	#清理备份产生的数据（保留期限15天）
+│   │   ├── handle.sh	#处理scp过来数据处理目录
+│   │   ├── main.sh	#执行主程序
+│   │   └── rank.sh	#执行离线跑分程序
+│   └── test	#neo4j auto change database info
+│       ├── change_db.sh
+│       ├── handle.sh
+│       ├── up1.sh
+│       └── update_neo4j_for_gang.sh
+└── TRdata.tgz

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+
+
+	<category name="RECORD" additivity="false">
+		<priority value="debug" />
+		<appender-ref ref="FILE-RECORD" />
+		<appender-ref ref="CONSOLE" />
+	</category>
+
+	<appender name="FILE-RECORD" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="info"></param>
+		<param name="ImmediateFlush" value="true"></param>
+		<param name="file" value="/server/tomcat/logs/logRecord.log" />
+		<!--<param name="file" value="d:/logCollection.log" />-->
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+
+		<!-- <param name="DatePattern" value="'.'yyyy-MM-dd-HH"/>-->
+
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %6p - %30.30c - %m\n" />
+		</layout>
+		<!--
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="DEBUG" />
+			<param name="LevelMin" value="ERROR" />
+		</filter>-->
+	</appender>
+
+
+
+
+
+	<category name="ERROR" additivity="false">
+		<priority value="debug" />
+		<appender-ref ref="FILE-ERROR" />
+		<appender-ref ref="CONSOLE" />
+	</category>
+
+	<appender name="FILE-ERROR" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="info"></param>
+		<param name="ImmediateFlush" value="true"></param>
+		<param name="file" value="/server/tomcat/logs/logError.log" />
+		<!--<param name="file" value="d:/logCollection.log" />-->
+		<!--<param name="DatePattern" value="'.'yyyy-MM-dd" />-->
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH"/>
+
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%7r] %6p - %30.30c - %m \n" />
+		</layout>
+		<!--
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="INFO" />
+			<param name="LevelMin" value="INFO" />
+		</filter> -->
+	</appender>
+
+	<!--
+        <appender name="railyFile"
+                  class="org.apache.log4j.RollingFileAppender">
+            <param name="File" value="/server/tomcat/logs/logCollection.log"></param>
+            <param name="ImmediateFlush" value="true"/>
+            <param name="Threshold" value="info"></param>
+            <param name="Append" value="true"></param>
+            <param name="MaxFileSize" value="300MB"></param>
+            <param name="MaxBackupIndex" value="100"></param>
+            <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] {%c:%L}-%m%n"></param>
+            </layout>
+        </appender>
+    -->
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<!--<layout class="org.apache.log4j.PatternLayout">-->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %6p - %30.30c - %m\n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="FATAL" />
+			<param name="LevelMin" value="DEBUG" />
+		</filter>
+	</appender>
+
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE-RECORD" />
+		<!--		<appender-ref ref="railyFile" />-->
+	</root>
+
+	<!--
+        <category name="org.springframework">
+            <priority value="error" />
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="FILE-RECORD" />
+        </category>-->
+
+</log4j:configuration>
